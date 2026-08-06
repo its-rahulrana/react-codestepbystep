@@ -1,23 +1,15 @@
-
-import React, { useState } from "react";
+import Login, { Profile, Setting, Msg } from './UserComponent';
 
 function App(){
   return(
     <>
       <h1>Hello, React!</h1>
-      <Fruit />
-      <p>Price is {sum()}</p>
+      <Login />
+      <Profile />
+      <Setting />
+      <p>{Msg}</p>
     </>
   )
 }
 
-function Fruit (){
-  return(
-    <h3>Apple is a delicious fruit!</h3>
-  )
-}
-
-function sum(){
-  return(20+34)
-}
 export default App;
