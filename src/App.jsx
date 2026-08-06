@@ -1,23 +1,18 @@
 import { useState } from "react";
-import Counter from "./Counter";
+import Toggle from "./Toggle";
 
 function App() {
-
-  const [fruit, setFruit] = useState("Rahul");
-
-  return (
+  const [show, setShow] = useState(true);
+  return(
     <>
-      <h3>My name is {fruit}!</h3>
-
-      <br/>
-      <button onClick={() => setFruit("Amit")} style={{width:"300px"}}>Change Name</button>
-      <br/>
-      <br/>
-      <br/>
-
-      <Counter/>
+      <h1>Toggler (Hide/Show) </h1>
+      <button onClick={() => setShow(!show)} style={{ padding: "10px", margin: "10px", width: "100px" }}>Toggle</button>
+      {
+        show && <Toggle />
+        // show? <Toggle /> : null
+      }
     </>
-  );
+  )
 }
 
 export default App;
