@@ -1,15 +1,21 @@
+import { useState } from "react";
+import Counter from "./Counter";
+
 function App() {
 
-  function handleClick(name) {
-    alert(name == "Apple"?"Fruit":"Animal");
-  }
+  const [fruit, setFruit] = useState("Rahul");
 
-  
   return (
     <>
-      <button onClick={() => handleClick("Apple")}>Apple</button>
+      <h3>My name is {fruit}!</h3>
+
       <br/>
-      <button onClick={() => handleClick("Elephant")}>Elephant</button>
+      <button onClick={() => setFruit("Amit")} style={{width:"300px"}}>Change Name</button>
+      <br/>
+      <br/>
+      <br/>
+
+      <Counter/>
     </>
   );
 }
