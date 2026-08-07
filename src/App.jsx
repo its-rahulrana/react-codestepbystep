@@ -1,25 +1,15 @@
-import User from "./User";
-import Wrapper from "./Wrapper";
+import { useState } from "react";
 
-function App() {
+function App(){
+  const [val, setVal] = useState("");
+
   return(
     <>
-      <h1>Wrapper and Default Props</h1>
-      <User name="John" />
-      <User />
-      <User/>
-      <User name="Rahul" />
-      <hr/>
-      <Wrapper/>
-      <Wrapper>
-        <ul>
-          <li>This is a children component</li>
-          <li>Passing name user component and default props</li>
-          <li>Passing style color in Wrapper component</li>
-        </ul>
-      </Wrapper>
-      <Wrapper color="yellow"/>
-    </>
+      <h1>Input field and on change event</h1>
+      <input value={val} onChange={(e)=>setVal(e.target.value)} type="text" style={{width: "200px", margin:"20px", padding: "10px"}}/>
+      <button onClick={()=>setVal("")} style={{width: "200px", margin:"20px", padding: "10px"}}>Clear</button>
+      <h3>{val}</h3>
+    </> 
   )
 }
 
