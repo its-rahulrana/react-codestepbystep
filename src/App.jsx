@@ -1,3 +1,4 @@
+import User from "./User";
 
 
 function App(){
@@ -31,29 +32,12 @@ function App(){
 
   return(
     <>
-    <h1>Loop with Map Function</h1>
-    <table style={{border: "1px solid grey", margin: "10px"}}>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>City</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          user.map((item, index) => (
-            <tr key={index}>
-              <td>{item.id}</td>
-              <td>{item.name}</td>
-              <td>{item.email}</td>
-              <td>{item.city}</td>
-            </tr>
-          ))
-        }
-      </tbody>
-    </table>
+    <h1>Reuse Component in Loop</h1>
+      {
+        user.map((item, index)=>(
+          <User user={item} key={index}/>
+        ))
+      }
     </>
   )
 }
