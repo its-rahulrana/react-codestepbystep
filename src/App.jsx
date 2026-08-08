@@ -12,11 +12,11 @@ function App(){
 
   useEffect(()=>{
     consoleRender()
-  },[sum]);
+  },[sum, sub]);
 
   return(
     <>
-      <h1>useEffect: Call on changing single state</h1>
+      <h1>useEffect: Call on changing both state</h1>
       <button onClick={()=>setSum(sum+1)}>Counter</button>
       <h3>{sum}</h3>
       <br/>
