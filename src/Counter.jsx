@@ -7,7 +7,7 @@ function Counter({sum, sub}){
 
     useEffect(()=>{
         consoleRender();
-    }, []);
+    }, [sum]);
 
     return(
         <div>
