@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 function App(){
@@ -9,11 +9,13 @@ function App(){
     console.log("Function Called!")
   }
 
-  consoleRender();
-  
+  useEffect(()=>{
+    consoleRender()
+  },[]);
+
   return(
     <>
-      <h1>useEffect: Call every time</h1>
+      <h1>useEffect: Call only once</h1>
       <button onClick={()=>setSum(sum+1)}>Counter</button>
       <h3>{sum}</h3>
     </>
