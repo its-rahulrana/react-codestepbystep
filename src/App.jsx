@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 function App(){
   
   const [sum, setSum] = useState(0);
+  const [sub, setSub] = useState(100);
 
   function consoleRender (){
     console.log("Function Called!")
@@ -11,13 +12,16 @@ function App(){
 
   useEffect(()=>{
     consoleRender()
-  },[]);
+  },[sum]);
 
   return(
     <>
-      <h1>useEffect: Call only once</h1>
+      <h1>useEffect: Call on changing single state</h1>
       <button onClick={()=>setSum(sum+1)}>Counter</button>
       <h3>{sum}</h3>
+      <br/>
+      <button onClick={()=>setSub(sub-1)}>Reducer</button>
+      <h3>{sub}</h3>
     </>
   )
 }
