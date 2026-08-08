@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Counter from "./Counter";
 
 
 function App(){
@@ -6,22 +7,14 @@ function App(){
   const [sum, setSum] = useState(0);
   const [sub, setSub] = useState(100);
 
-  function consoleRender (){
-    console.log("Function Called!")
-  }
-
-  useEffect(()=>{
-    consoleRender()
-  },[sum, sub]);
-
   return(
     <>
-      <h1>useEffect: Call on changing both state</h1>
+      <h1>useEffect: Call on changes props</h1>
       <button onClick={()=>setSum(sum+1)}>Counter</button>
-      <h3>{sum}</h3>
       <br/>
       <button onClick={()=>setSub(sub-1)}>Reducer</button>
-      <h3>{sub}</h3>
+      <br/>
+      <Counter sum={sum} sub={sub}/>
     </>
   )
 }
