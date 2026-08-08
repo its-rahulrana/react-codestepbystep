@@ -1,10 +1,13 @@
+import { useEffect } from "react";
 
 
 function Counter({sum, sub}){
 
     const consoleRender = () => console.log("Funtion Called");
 
-    consoleRender();
+    useEffect(()=>{
+        consoleRender();
+    }, []);
 
     return(
         <div>

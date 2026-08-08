@@ -9,7 +9,7 @@ function App(){
 
   return(
     <>
-      <h1>useEffect: Call on changes props</h1>
+      <h1>useEffect: Call Once on changes props</h1>
       <button onClick={()=>setSum(sum+1)}>Counter</button>
       <br/>
       <button onClick={()=>setSub(sub-1)}>Reducer</button>
