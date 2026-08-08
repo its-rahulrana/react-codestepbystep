@@ -10,7 +10,7 @@ function App(){
 
   return(
     <>
-      <h1>useEffect: Call on changing one props</h1>
+      <h1>Life Cycle method with useEffect</h1>
       <button onClick={()=>setSum(sum+1)}>Counter</button>
       <br/>
       <button onClick={()=>setSub(sub-1)}>Reducer</button>
