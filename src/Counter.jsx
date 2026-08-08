@@ -3,11 +3,19 @@ import { useEffect } from "react";
 
 function Counter({sum, sub}){
 
-    const consoleRender = () => console.log("Funtion Called");
+    useEffect(()=>{
+        console.log("Mounting Phase")
+    },[])
 
     useEffect(()=>{
-        consoleRender();
-    }, [sum]);
+        console.log("Updating Phase")
+    },[sum])
+
+    useEffect(()=>{
+        return ()=>{
+            console.log("Unmount!")
+        }
+    },[])
 
     return(
         <div>

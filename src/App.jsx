@@ -6,6 +6,7 @@ function App(){
   
   const [sum, setSum] = useState(0);
   const [sub, setSub] = useState(100);
+  const [display, setDisplay] = useState(true);
 
   return(
     <>
@@ -14,7 +15,10 @@ function App(){
       <br/>
       <button onClick={()=>setSub(sub-1)}>Reducer</button>
       <br/>
-      <Counter sum={sum} sub={sub}/>
+      <button onClick={()=>setDisplay(!display)}>Toggle</button>
+      {
+        display?<Counter sum={sum} sub={sub}/>:null
+      }
     </>
   )
 }
