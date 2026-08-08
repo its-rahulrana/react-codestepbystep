@@ -1,24 +1,98 @@
-import { useState } from "react";
-import Counter from "./Counter";
 
 
 function App(){
-  
-  const [sum, setSum] = useState(0);
-  const [sub, setSub] = useState(100);
-  const [display, setDisplay] = useState(true);
+
+  const cardStyle = {
+    border: "1px solid grey",
+    width: "300px",
+    boxShadow: "1px white",
+    margin: "10px",
+    padding: "10px",
+    borderRadius: "10px"
+  }
 
   return(
     <>
-      <h1>Life Cycle method with useEffect</h1>
-      <button onClick={()=>setSum(sum+1)}>Counter</button>
-      <br/>
-      <button onClick={()=>setSub(sub-1)}>Reducer</button>
-      <br/>
-      <button onClick={()=>setDisplay(!display)}>Toggle</button>
-      {
-        display?<Counter sum={sum} sub={sub}/>:null
-      }
+      <h1>Inline Style</h1>
+      <div style={{display:"flex", flexWrap: "wrap"}}>
+        <div style={cardStyle}>
+          <img src="src\assets\hero.png" style={{width:"250px"}}/>
+          <div>
+            <h3>Rahul Kumar</h3>
+            <p>Inline style in react.js</p>
+          </div>
+        </div>
+        <div style={cardStyle}>
+          <img src="src\assets\hero.png" style={{width:"250px"}}/>
+          <div>
+            <h3>Rahul Kumar</h3>
+            <p>Inline style in react.js</p>
+          </div>
+        </div>
+        <div style={cardStyle}>
+          <img src="src\assets\hero.png" style={{width:"250px"}}/>
+          <div>
+            <h3>Rahul Kumar</h3>
+            <p>Inline style in react.js</p>
+          </div>
+        </div>
+        <div style={cardStyle}>
+          <img src="src\assets\hero.png" style={{width:"250px"}}/>
+          <div>
+            <h3>Rahul Kumar</h3>
+            <p>Inline style in react.js</p>
+          </div>
+        </div>
+        <div style={cardStyle}>
+          <img src="src\assets\hero.png" style={{width:"250px"}}/>
+          <div>
+            <h3>Rahul Kumar</h3>
+            <p>Inline style in react.js</p>
+          </div>
+        </div>
+        <div style={cardStyle}>
+          <img src="src\assets\hero.png" style={{width:"250px"}}/>
+          <div>
+            <h3>Rahul Kumar</h3>
+            <p>Inline style in react.js</p>
+          </div>
+        </div>
+        <div style={cardStyle}>
+          <img src="src\assets\hero.png" style={{width:"250px"}}/>
+          <div>
+            <h3>Rahul Kumar</h3>
+            <p>Inline style in react.js</p>
+          </div>
+        </div>
+        <div style={cardStyle}>
+          <img src="src\assets\hero.png" style={{width:"250px"}}/>
+          <div>
+            <h3>Rahul Kumar</h3>
+            <p>Inline style in react.js</p>
+          </div>
+        </div>
+        <div style={cardStyle}>
+          <img src="src\assets\hero.png" style={{width:"250px"}}/>
+          <div>
+            <h3>Rahul Kumar</h3>
+            <p>Inline style in react.js</p>
+          </div>
+        </div>
+        <div style={cardStyle}>
+          <img src="src\assets\hero.png" style={{width:"250px"}}/>
+          <div>
+            <h3>Rahul Kumar</h3>
+            <p>Inline style in react.js</p>
+          </div>
+        </div>
+        <div style={cardStyle}>
+          <img src="src\assets\hero.png" style={{width:"250px"}}/>
+          <div>
+            <h3>Rahul Kumar</h3>
+            <p>Inline style in react.js</p>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
