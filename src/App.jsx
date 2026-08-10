@@ -1,17 +1,12 @@
-import './assets/style.css';
+import User from "./User";
+
 
 function App(){
-
   return(
     <>
-      <h1>External Style</h1>
-        <div className="cardStyle">
-          <img src="src\assets\hero.png" className="imgStyle"/>
-          <div>
-            <h3>Rahul Kumar</h3>
-            <p>Inline style in react.js</p>
-          </div>
-        </div>
+      <h1>Style with CSS Module</h1>
+      <p>Paragraph with same class name as in User Component</p>
+      <User/>
     </>
   )
 }
