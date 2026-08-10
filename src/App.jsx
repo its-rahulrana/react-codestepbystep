@@ -1,18 +1,15 @@
-import styled from "styled-components";
+import { Button } from "react-bootstrap";
 
 function App(){
-
-  const Heading3 = styled.h3`
-  color: #aa0404;
-  background-color: #8acbff;
-  padding: 5px
-  `
-
+  
   return(
     <>
-      <h1>Styled Component</h1>
-      <h3>Normal heading 3</h3>
-      <Heading3>This is heading 3 from styled component</Heading3>
+      <h1>Bootstrap with React</h1>
+      <button>Normal Button</button>
+      <br/>
+      <Button>Bootstrap Button</Button>
+      <br/>
+      <Button variant="success">Bootstrap button with variant: success</Button>
     </>
   )
 }
