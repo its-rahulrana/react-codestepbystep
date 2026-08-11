@@ -1,42 +1,56 @@
 import { useRef } from "react";
 
-function App(){
-  
-  const inputRef = useRef(null);
-  const paraRef = useRef();
+const App = () => {
+  const nameRef = useRef();
+  const passRef = useRef();
 
-  const inputHandler = () =>{
-    inputRef.current.focus();
-    inputRef.current.style.color = 'red';
-    inputRef.current.value = "12345"
+  const formHandler = (event) => {
+    event.preventDefault();
+    const name = document.querySelector("#name").value;
+    const pass = document.querySelector("#pass").value;
+
+    console.log(`Name : ${name}, Password : ${pass}`);
   }
 
-  const handleToggle = () => {
-    inputRef.current.style.display === 'none'?
-    inputRef.current.style.display = 'inline':
-    inputRef.current.style.display = 'none'
+  const formHandlerRef = event => {
+    event.preventDefault();
+    
+    const name = nameRef.current.value;
+    const pass = passRef.current.value;
+
+    console.log(`RefName : ${name}, RefPassword : ${pass}`);
   }
 
-  const paraHandler = () => {
-    paraRef.current.style.color = 'skyblue';
-    paraRef.current.style.padding = '20px';
-    paraRef.current.style.backgroundColor = 'yellow'
-  }
-
-  return(
+  return (
     <>
-      <h1>useRef Hook</h1>
-      <div style={{width: "100%"}}>
-        <button onClick={handleToggle}>Toggle</button>
-        <input ref={inputRef} type="text" />
-        <button onClick={inputHandler}>Focus on Input</button>
+      <h1>Uncontrolled Component</h1>
+      <div style={{border: "1px solid red", width:"300px", borderRadius: "10px", margin:"10px"}}>
+        <h3>Documnet Method</h3>
+        <form action="" method="post" onSubmit={formHandler}>
+          <input type="text" id="name"/>
+          <br/>
+          <br/>
+          <input type="password" id="pass"/>
+          <br/>
+          <br/>
+          <button type="submit">Submit</button>
+        </form>
       </div>
       <br/>
-      <br/>
-      <button onClick={paraHandler} style={{width:"200px"}}>Paragraph Button</button>
-      <p ref={paraRef}>This a sentence to check Paragraph refrence.</p>
+      <div style={{border: "1px solid red", width:"300px", borderRadius: "10px", margin:"10px"}}>
+        <h3>useRef Method</h3>
+        <form action="" method="post" onSubmit={formHandlerRef}>
+          <input type="text" ref={nameRef}/>
+          <br/>
+          <br/>
+          <input type="password" ref={passRef}/>
+          <br/>
+          <br/>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </>
   )
 }
 
-export default App;
+export default App; 
