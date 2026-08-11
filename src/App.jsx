@@ -1,33 +1,22 @@
-import { useFormStatus } from "react-dom";
+import { useTransition } from "react";
 
 const App = () => {
 
-  const submitHandler = async () => {
-    await new Promise(res => setTimeout(res, 2000));
-    console.log("Submit");
+  const [pending, startTransition] = useTransition();
+
+  const buttonHandler = () => {
+    startTransition(async()=>{
+      await new Promise(res => setTimeout(res, 3000))
+    })
   }
-
-  const CustomForm = () => {
-    const {pending} = useFormStatus()
-    console.log(pending);
-
-    return(
-      <div>
-          <input type="text"/>
-          <br/>
-          <input type="password"/>
-          <br/>
-          <button disabled={pending}>{pending?'Submitting...':"Submit"}</button>
-        </div>
-    )
-  }
-
-  return (
+  
+  return(
     <>
-      <h1>useFormStatus Hook in React JS</h1>
-      <form action={submitHandler}>
-        <CustomForm/>
-      </form>
+      <h1>useTransition Hook</h1>
+      {
+        pending && <img style={{width: "100px"}} src="src\assets\Loading_icon.gif"/>
+      }
+      <button disabled={pending} onClick={buttonHandler}>Click</button>
     </>
   )
 }
