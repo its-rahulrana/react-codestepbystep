@@ -1,22 +1,33 @@
-import { useRef } from "react";
-import UserInput from "./UserInput";
+import { useFormStatus } from "react-dom";
 
 const App = () => {
 
-  const inputRef = useRef();
-
-  const inputRefHandler = () => {
-    inputRef.current.focus(),
-    inputRef.current.value = "12345",
-    inputRef.current.style.color = "blue",
-    inputRef.current.style.width = "400px"
+  const submitHandler = async () => {
+    await new Promise(res => setTimeout(res, 2000));
+    console.log("Submit");
   }
-  
-  return(
+
+  const CustomForm = () => {
+    const {pending} = useFormStatus()
+    console.log(pending);
+
+    return(
+      <div>
+          <input type="text"/>
+          <br/>
+          <input type="password"/>
+          <br/>
+          <button disabled={pending}>{pending?'Submitting...':"Submit"}</button>
+        </div>
+    )
+  }
+
+  return (
     <>
-      <h1>frowardRef</h1>
-      <UserInput ref={inputRef}/>
-      <button onClick={inputRefHandler}>Click Here</button>
+      <h1>useFormStatus Hook in React JS</h1>
+      <form action={submitHandler}>
+        <CustomForm/>
+      </form>
     </>
   )
 }
