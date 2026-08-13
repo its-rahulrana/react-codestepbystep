@@ -1,39 +1,48 @@
 import { useState } from "react";
 
 const App = () => {
-  const [user, setUser] = useState({
-    name: "John Doe",
-    age: 26,
-    address: {
-      city: "Mumbai",
-      state: "Maharashtra",
-      country: "India"
-    }
-  });
+  const [names, setNames] = useState(["John", "Michale", "Clark"]);
+
+  const [users, setUsers] = useState([
+    {name: "John", age: 23},
+    {name: "Clark", age: 32},
+    {name: "Sammual", age: 56},
+    {name: "Peter", age: 19}
+  ]);
 
   const handleName = name => {
-    user.name = name;
-    setUser({...user});
+    let data = names;
+    data[data.length-1] = name;
+    setNames([...data]);
   }
 
-  const handleCity = city => {
-    let data = user;
-    data.address.city = city;
-    setUser({...data});
+  const handleAge = age => {
+    users[users.length-1].age = age;
+    setUsers([...users]);
   }
 
   return(
     <>
-      <h1>Updating Object in React</h1>
+      <h1>Updating Array</h1>
+      <hr/>
       <div>
-        <input onChange={e => handleName(e.target.value)} type="text" placeholder="Update Name"/>
-        <br/>
-        <br/>
-        <input onChange={e => handleCity(e.target.value)} type="text" placeholder="Update City"/>
-        <hr/>
-        <h3>Name: {user.name}</h3>
-        <h3>Age: {user.age}</h3>
-        <h3>City: {user.address.city}</h3>
+        <input onChange={e=>handleName(e.target.value)} type="text" placeholder="Update last name"/>
+      {
+        names.map((item, index) => (
+          <h3 key={index}>{item}</h3>
+        ))
+      }
+      </div>
+      <br/>
+      <br/>
+      <hr/>
+      <div>
+        <input onChange={e => handleAge(e.target.value)} type="number" placeholder="Update last age"/>
+      {
+        users.map((item, index) => (
+          <h3 key={index}>Name: {item.name}, Age: {item.age}</h3>
+        ))
+      }
       </div>
     </>
   )
