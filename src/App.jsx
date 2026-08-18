@@ -1,32 +1,24 @@
-import { useId } from "react";
+import { useState } from "react";
+import College from "./College";
+import { SubjectContext } from "./ContextData";
 
 const App = () => {
+  const [sub, setSub] = useState();
+
   return (
     <>
-      <h1>useId Hook</h1>
-      <UserForm/>
-      <hr/>
-      <UserForm/>
+      <h1>Context API</h1>
+      <select defaultValue="Select Options" onChange={e => setSub(e.target.value)}>
+        <option value="English">English</option>
+        <option value="Hindi">Hindi</option>
+        <option value="Mathematics">Mathematics</option>
+        <option value="Science">Science</option>
+      </select>
+      <SubjectContext.Provider value={sub}>
+        <College/>
+      </SubjectContext.Provider>
     </>
   )
 }
 
 export default App;
-
-const UserForm = () => {
-  const userId = useId();
-  return(
-    <form>
-      <input type="text" id={userId+"name"} placeholder="Name"/>
-      <br/>
-      <br/>
-      <input type="email" id={userId+"email"} placeholder="Email"/>
-      <br/>
-      <br/>
-      <input type="password" id={userId+"pass"} placeholder="Password"/>
-      <br/>
-      <br/>
-      <button>Submit</button>
-    </form>
-  )
-}
