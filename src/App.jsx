@@ -1,51 +1,46 @@
-import { useState } from "react";
+import { useActionState } from "react";
 
 const App = () => {
-  const [names, setNames] = useState(["John", "Michale", "Clark"]);
 
-  const [users, setUsers] = useState([
-    {name: "John", age: 23},
-    {name: "Clark", age: 32},
-    {name: "Sammual", age: 56},
-    {name: "Peter", age: 19}
-  ]);
+  const submitHandler = async(previousData, formData) => {
+    let name = formData.get('name');
+    let password = formData.get('pass')
+    
+    await new Promise (res => setTimeout(res,2000))
+    console.log(name, password)
 
-  const handleName = name => {
-    let data = names;
-    data[data.length-1] = name;
-    setNames([...data]);
+    if(name && password){
+      return {message: "Data Submitted", name, password}
+    } else {
+      return {error: "Failed to submit, Enter proper data"}
+    }
   }
 
-  const handleAge = age => {
-    users[users.length-1].age = age;
-    setUsers([...users]);
-  }
-
+  const [data, action, pending] = useActionState(submitHandler, undefined);
+  
   return(
     <>
-      <h1>Updating Array</h1>
-      <hr/>
-      <div>
-        <input onChange={e=>handleName(e.target.value)} type="text" placeholder="Update last name"/>
-      {
-        names.map((item, index) => (
-          <h3 key={index}>{item}</h3>
-        ))
-      }
-      </div>
-      <br/>
-      <br/>
-      <hr/>
-      <div>
-        <input onChange={e => handleAge(e.target.value)} type="number" placeholder="Update last age"/>
-      {
-        users.map((item, index) => (
-          <h3 key={index}>Name: {item.name}, Age: {item.age}</h3>
-        ))
-      }
-      </div>
+      <h1>useActionState Hook</h1>
+      <form action={action}>
+        <input type="text" placeholder="User Name" name="name"/>
+        <br/>
+        <br/>
+        <input type="password" placeholder="Enter Password" name="pass"/>
+        <br/>
+        <br/>
+        <button disabled={pending}>Submit</button>
+        <br/>
+        {
+          data?.error && <span style={{color: "red"}}>{data.error}</span>
+        }
+        {
+          data?.message && <span style={{color: "green"}}>{data.message}</span>
+        }
+      </form>
+      <h3>Name: {data?.name}</h3>
+      <h3>Password: {data?.password}</h3>
     </>
   )
-}
+};
 
 export default App;
